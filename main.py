@@ -118,9 +118,9 @@ def add_entry(server_request: cob.Request) -> cob.Page:
 app = cob.App("Survey Template", use_built_in_auth=True)
 
 app.register_function(home, show_in_navbar=False)
-app.register_function(add_entry, show_in_navbar=True, require_login=True)
-app.register_function(edit_entry, show_in_navbar=False, require_login=True)
-app.register_function(delete_entry, show_in_navbar=False, require_login=True)
+app.register_function(add_entry, show_in_navbar=True, require_login=False)
+app.register_function(edit_entry, show_in_navbar=False, require_login=False)
+app.register_function(delete_entry, show_in_navbar=False, require_login=False)
 
 server = app.run()
 # Run this using `python3 main.py` or `python main.py` depending on your system.
