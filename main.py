@@ -60,7 +60,7 @@ def home(server_request: cob.Request) -> cob.Page:
     page.add_datagrid(df, action_buttons=action_buttons)
 
     page.add_link("Add Entry", "/add_entry")
-    page.add_link("View the source code for this app", f"https://www.pycob.com/code_editor?code_owner=survey")
+    page.add_link("View the source code for this app", f"https://github.com/pycob/example-survey/blob/main/main.py")
 
     return page
 
@@ -115,12 +115,12 @@ def add_entry(server_request: cob.Request) -> cob.Page:
 
 # APP CONFIGURATION: Do not delete this comment. 
 # Temporary Restriction: Do not edit the code below this comment.
-app = cob.App("Survey Template", use_built_in_auth=False)
+app = cob.App("Survey Template", use_built_in_auth=True)
 
 app.register_function(home, show_in_navbar=False)
-app.register_function(add_entry, show_in_navbar=True)
-app.register_function(edit_entry, show_in_navbar=False)
-app.register_function(delete_entry, show_in_navbar=False)
+app.register_function(add_entry, show_in_navbar=True, require_login=True)
+app.register_function(edit_entry, show_in_navbar=False, require_login=True)
+app.register_function(delete_entry, show_in_navbar=False, require_login=True)
 
 server = app.run()
 # Run this using `python3 main.py` or `python main.py` depending on your system.
